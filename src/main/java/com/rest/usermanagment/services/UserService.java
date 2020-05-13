@@ -35,7 +35,7 @@ public class UserService implements IService<User>{
            UserEntity savedEntity = userRepository.save(Objects.requireNonNull(userEntity));
            user = userEntityToUser.convert(savedEntity);
        }catch (DataIntegrityViolationException e){
-           throw new DuplicateUserException("User email: "+ user.getEmail() + " already exists.");
+           throw new DuplicateUserException("User email already exists.");
        }
        return user;
     }
@@ -44,7 +44,7 @@ public class UserService implements IService<User>{
         try {
             userRepository.deleteById(id);
         }catch (EmptyResultDataAccessException e){
-            throw new UserNotFoundException("User with id: "+id + " was not found.");
+            throw new UserNotFoundException("User was not found.");
         }
     }
 
@@ -52,7 +52,7 @@ public class UserService implements IService<User>{
     public User findById(long id) {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
         if (optionalUser.isEmpty()){
-            throw new UserNotFoundException("User with id: "+id + " was not found.");
+            throw new UserNotFoundException("User was not found.");
         }
         return userEntityToUser.convert(optionalUser.get());
     }
