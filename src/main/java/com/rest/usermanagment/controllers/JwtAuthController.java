@@ -4,6 +4,7 @@ import com.rest.usermanagment.models.AuthRequest;
 import com.rest.usermanagment.models.AuthResponse;
 import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.security.util.JwtTokenUtil;
+import com.rest.usermanagment.services.IQueryService;
 import com.rest.usermanagment.services.SecurityUserDetailService;
 import com.rest.usermanagment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class JwtAuthController {
     private SecurityUserDetailService userDetailService;
 
     @Autowired
-    private UserService userService;
+    private IQueryService<User> userService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @PostMapping("/auth")

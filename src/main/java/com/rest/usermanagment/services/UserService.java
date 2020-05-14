@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class UserService implements ICrudService<User> ,IQueryService<User>{
+public class UserService implements IQueryService<User>,ICrudService<User>{
 
     @Autowired
     private UserRepository userRepository;
@@ -39,6 +39,7 @@ public class UserService implements ICrudService<User> ,IQueryService<User>{
        }
        return user;
     }
+
     @Override
     public void deleteById(long id) {
         try {
