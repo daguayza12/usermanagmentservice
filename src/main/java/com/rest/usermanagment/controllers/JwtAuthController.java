@@ -42,7 +42,7 @@ public class JwtAuthController {
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthResponse(token));
     }
-    @DeleteMapping("/auth/{email}")
+    @GetMapping("/auth/{email}")
     public User getLoggedInUser(@PathVariable String email)  {
         return userService.findByEmail(email);
     }
