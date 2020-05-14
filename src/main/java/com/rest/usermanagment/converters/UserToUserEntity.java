@@ -1,6 +1,6 @@
 package com.rest.usermanagment.converters;
 
-import com.rest.usermanagment.payload.User;
+import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.entities.UserEntity;
 import com.rest.usermanagment.entities.UserGroupEntity;
 import org.springframework.core.convert.converter.Converter;

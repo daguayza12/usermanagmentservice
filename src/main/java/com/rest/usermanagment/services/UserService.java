@@ -2,7 +2,7 @@ package com.rest.usermanagment.services;
 import com.rest.usermanagment.converters.UserToUserEntity;
 import com.rest.usermanagment.converters.UserEntityToUser;
 import com.rest.usermanagment.exceptions.DuplicateUserException;
-import com.rest.usermanagment.payload.User;
+import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.entities.UserEntity;
 import com.rest.usermanagment.exceptions.UserNotFoundException;
 import com.rest.usermanagment.repositories.UserRepository;

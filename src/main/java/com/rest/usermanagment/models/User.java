@@ -1,4 +1,4 @@
-package com.rest.usermanagment.payload;
+package com.rest.usermanagment.models;
 
 public class User {
 

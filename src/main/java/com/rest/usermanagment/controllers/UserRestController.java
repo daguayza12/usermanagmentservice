@@ -1,7 +1,6 @@
 package com.rest.usermanagment.controllers;
 
-import com.rest.usermanagment.exceptions.DuplicateUserException;
-import com.rest.usermanagment.payload.User;
+import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.converters.UserEntityToUser;
 import com.rest.usermanagment.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;

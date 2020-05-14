@@ -1,4 +1,4 @@
-package com.rest.usermanagment.objects;
+package com.rest.usermanagment.models;
 
 public class ErrorResponse {
     private int status;

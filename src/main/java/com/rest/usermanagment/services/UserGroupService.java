@@ -3,7 +3,7 @@ package com.rest.usermanagment.services;
 import com.rest.usermanagment.converters.UserGroupEntityToUserGroup;
 import com.rest.usermanagment.converters.UserGroupToUserGroupEntity;
 import com.rest.usermanagment.exceptions.DuplicateUserGroupException;
-import com.rest.usermanagment.payload.UserGroup;
+import com.rest.usermanagment.models.UserGroup;
 import com.rest.usermanagment.entities.UserGroupEntity;
 import com.rest.usermanagment.exceptions.UserGroupNotFoundException;
 import com.rest.usermanagment.repositories.UserGroupRepository;

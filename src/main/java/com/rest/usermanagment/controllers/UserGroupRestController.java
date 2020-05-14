@@ -1,7 +1,6 @@
 package com.rest.usermanagment.controllers;
 
-import com.rest.usermanagment.exceptions.DuplicateUserGroupException;
-import com.rest.usermanagment.payload.UserGroup;
+import com.rest.usermanagment.models.UserGroup;
 import com.rest.usermanagment.services.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

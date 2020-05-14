@@ -2,7 +2,7 @@ package com.rest.usermanagment.controllers;
 
 import com.rest.usermanagment.exceptions.DuplicateUserException;
 import com.rest.usermanagment.exceptions.DuplicateUserGroupException;
-import com.rest.usermanagment.objects.ErrorResponse;
+import com.rest.usermanagment.models.ErrorResponse;
 import com.rest.usermanagment.exceptions.UserGroupNotFoundException;
 import com.rest.usermanagment.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;

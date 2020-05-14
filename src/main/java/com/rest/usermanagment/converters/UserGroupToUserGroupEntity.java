@@ -1,7 +1,7 @@
 package com.rest.usermanagment.converters;
 
-import com.rest.usermanagment.payload.User;
-import com.rest.usermanagment.payload.UserGroup;
+import com.rest.usermanagment.models.User;
+import com.rest.usermanagment.models.UserGroup;
 import com.rest.usermanagment.entities.UserEntity;
 import com.rest.usermanagment.entities.UserGroupEntity;
 import org.springframework.beans.factory.annotation.Autowired;
