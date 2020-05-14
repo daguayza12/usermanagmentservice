@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class UserGroupService implements IService<UserGroup>{
+public class UserGroupService implements ICrudService<UserGroup> {
     @Autowired
     private UserGroupRepository userGroupRepository;
 

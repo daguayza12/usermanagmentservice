@@ -3,7 +3,7 @@ package com.rest.usermanagment.services;
 
 import java.util.Set;
 
-public interface IService<T> {
+public interface ICrudService<T> {
 
     T save(T entity) throws Exception;
     void deleteById(long id);

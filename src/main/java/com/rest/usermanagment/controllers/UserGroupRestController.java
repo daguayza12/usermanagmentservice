@@ -1,7 +1,7 @@
 package com.rest.usermanagment.controllers;
 
 import com.rest.usermanagment.models.UserGroup;
-import com.rest.usermanagment.services.IService;
+import com.rest.usermanagment.services.ICrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.Set;
 @RequestMapping("/api")
 public class UserGroupRestController {
     @Autowired
-    private IService<UserGroup> userGroupService;
+    private ICrudService<UserGroup> userGroupService;
 
     @GetMapping("/groups")
     public Set<UserGroup> addUser(){

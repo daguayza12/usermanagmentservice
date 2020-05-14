@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class UserService implements IService<User>{
+public class UserService implements ICrudService<User> ,IQueryService<User>{
 
     @Autowired
     private UserRepository userRepository;
@@ -68,5 +68,15 @@ public class UserService implements IService<User>{
         }
 
         return users;
+    }
+
+    @Override
+    public User findByEmail(String email) {
+            UserEntity userEntity = userRepository.findByEmail(email);
+            if(null==userEntity){
+                throw new UserNotFoundException("User was not found.");
+            }
+            return userEntityToUser.convert(userEntity);
+
     }
 }

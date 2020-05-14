@@ -2,8 +2,10 @@ package com.rest.usermanagment.controllers;
 
 import com.rest.usermanagment.models.AuthRequest;
 import com.rest.usermanagment.models.AuthResponse;
+import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.security.util.JwtTokenUtil;
 import com.rest.usermanagment.services.SecurityUserDetailService;
+import com.rest.usermanagment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +24,8 @@ public class JwtAuthController {
     private SecurityUserDetailService userDetailService;
 
     @Autowired
+    private UserService userService;
+    @Autowired
     private JwtTokenUtil jwtTokenUtil;
     @PostMapping("/auth")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest authRequest) throws Exception {
@@ -33,14 +37,14 @@ public class JwtAuthController {
         catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
-
-
         final UserDetails userDetails = userDetailService
                 .loadUserByUsername(authRequest.getEmail());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
-
         return ResponseEntity.ok(new AuthResponse(token));
+    }
+    @DeleteMapping("/auth/{email}")
+    public User getLoggedInUser(@PathVariable String email)  {
+        return userService.findByEmail(email);
     }
 
 }
