@@ -3,7 +3,6 @@ package com.rest.usermanagment.controllers;
 import com.rest.usermanagment.models.User;
 
 import com.rest.usermanagment.services.ICrudService;
-import com.rest.usermanagment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +22,7 @@ public class UserRestController {
 
     @PostMapping("/users")
     public User addUser(@RequestBody User user) throws Exception {
-        return userService.save(user);
+        return userService.saveOrUpdate(user);
     }
     @DeleteMapping("/users/{userId}")
     public String deleteUser(@PathVariable long userId){

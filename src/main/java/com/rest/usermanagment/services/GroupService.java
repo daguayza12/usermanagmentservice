@@ -13,7 +13,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-
 @Service
 public class GroupService implements ICrudService<Group> {
     @Autowired
@@ -24,8 +23,15 @@ public class GroupService implements ICrudService<Group> {
     @Autowired
     private GroupEntityToGroup userGrpEntityToUserGrp;
 
+    /**
+     * calls repo save method that will save or update group info based on input
+     * if input is passed with existing group then it will perform an update
+     * @param group
+     * @return
+     * @throws DuplicateGroupException
+     */
     @Override
-    public Group save(Group group) throws DuplicateGroupException {
+    public Group saveOrUpdate(Group group) throws DuplicateGroupException {
         GroupEntity groupEntity = userGrpToUserGrpEntity.convert(group);
         try {
             GroupEntity savedGroupEntity = groupRepository.save(Objects.requireNonNull(groupEntity));
@@ -36,24 +42,38 @@ public class GroupService implements ICrudService<Group> {
        return group;
     }
 
+    /**
+     * Deletes group based on groupId
+     * @param id
+     */
     @Override
     public void deleteById(long id) {
         try {
             groupRepository.deleteById(id);
         }catch (EmptyResultDataAccessException e){
-            throw new GroupNotFoundException("User group with id: "+ id + " was not found.");
+            throw new GroupNotFoundException("User group was not found.");
         }
     }
 
+    /**
+     * Finds Group based on groupId
+     * Used to verify a group exists before adding a user to group
+     * @param id
+     * @return
+     */
     @Override
     public Group findById(long id) {
         Optional<GroupEntity> optionalUser = groupRepository.findById(id);
         if (optionalUser.isEmpty()){
-            throw new GroupNotFoundException("User group with id: "+ id + " was not found.");
+            throw new GroupNotFoundException("User group was not found.");
         }
         return userGrpEntityToUserGrp.convert(optionalUser.get());
     }
 
+    /**
+     * Used to load all groups to group page
+     * @return
+     */
     @Override
     public Set<Group> findAll() {
         Set<GroupEntity> userGroupsEntity = new LinkedHashSet<>();

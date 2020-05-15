@@ -2,6 +2,9 @@ package com.rest.usermanagment.models;
 
 import java.util.Set;
 
+/**
+ * Class used for sending back to client
+ */
 public class Group {
 
     private long groupId;

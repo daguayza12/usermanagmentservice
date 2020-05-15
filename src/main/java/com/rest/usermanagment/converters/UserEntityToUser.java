@@ -4,7 +4,9 @@ import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.entities.UserEntity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-
+/**
+ * Converts User entity object to user model object that is used by client to display data
+ */
 @Component
 public class UserEntityToUser implements Converter<UserEntity, User> {
 

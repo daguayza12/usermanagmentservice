@@ -1,5 +1,7 @@
 package com.rest.usermanagment.models;
-
+/**
+ * Class used for sending back to client
+ */
 public class User {
 
     private long userId;

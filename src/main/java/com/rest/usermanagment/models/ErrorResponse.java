@@ -1,5 +1,8 @@
 package com.rest.usermanagment.models;
 
+/**
+ * Error response class used to map error response back to client
+ */
 public class ErrorResponse {
     private int status;
     private String message;

@@ -6,7 +6,6 @@ import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.security.util.JwtTokenUtil;
 import com.rest.usermanagment.services.IQueryService;
 import com.rest.usermanagment.services.SecurityUserDetailService;
-import com.rest.usermanagment.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,6 +27,13 @@ public class JwtAuthController {
     private IQueryService<User> userService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+    /**
+     * Authenticates user with Springs authentication manager
+     * Once user is authenticated a jwt token is created and returned
+     * @param authRequest
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/auth")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthRequest authRequest) throws Exception {
         try {
@@ -43,9 +49,4 @@ public class JwtAuthController {
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthResponse(token));
     }
-    @GetMapping("/auth/{email}")
-    public User getLoggedInUser(@PathVariable String email)  {
-        return userService.findByEmail(email);
-    }
-
 }

@@ -25,8 +25,15 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
     @Autowired
     private GroupService groupService;
 
+    /**
+     * calls repo save method that will save or update user info based on input
+     * if input is passed with existing userId then it will perform an update
+     * @param user
+     * @return
+     * @throws DuplicateUserException
+     */
     @Override
-    public User save(User user) throws DuplicateUserException {
+    public User saveOrUpdate(User user) throws DuplicateUserException {
        UserEntity userEntity = userToUserEntity.convert(user);
        if(userEntity.getGroupEntity()!=null){
            groupService.findById(userEntity.getGroupEntity().getGroupId());
@@ -40,6 +47,10 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
        return user;
     }
 
+    /**
+     * Deletes user based on userId sent from client
+     * @param id
+     */
     @Override
     public void deleteById(long id) {
         try {
@@ -49,6 +60,11 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
         }
     }
 
+    /**
+     * Finds user by userId
+     * @param id
+     * @return
+     */
     @Override
     public User findById(long id) {
         Optional<UserEntity> optionalUser = userRepository.findById(id);
@@ -58,6 +74,10 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
         return userEntityToUser.convert(optionalUser.get());
     }
 
+    /**
+     * Returns all users in the db. This is used when loading users in the user page
+     * @return
+     */
     @Override
     public Set<User> findAll() {
         Set<UserEntity> usersEntity = new LinkedHashSet<>();
@@ -71,6 +91,11 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
         return users;
     }
 
+    /**
+     * Finds user by email. This is called when authenticating a user
+     * @param email
+     * @return
+     */
     @Override
     public User findByEmail(String email) {
             UserEntity userEntity = userRepository.findByEmail(email);

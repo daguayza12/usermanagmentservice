@@ -1,5 +1,8 @@
 package com.rest.usermanagment.models;
 
+/**
+ * Auth class used to authenticate user before creating token
+ */
 public class AuthRequest {
     public String getEmail() {
         return email;

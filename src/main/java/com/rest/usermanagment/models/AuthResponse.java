@@ -1,5 +1,8 @@
 package com.rest.usermanagment.models;
 
+/**
+ * Token class used to send back token to client
+ */
 public class AuthResponse {
     private String token;
     public AuthResponse(){

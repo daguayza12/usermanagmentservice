@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/**
+ *  Handles exceptions specifies and returns appropriate return message based on exception
+ */
 @ControllerAdvice
 public  class RestExceptionController {
     

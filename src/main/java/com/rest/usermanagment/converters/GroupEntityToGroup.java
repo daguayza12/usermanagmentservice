@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Converts Group entity object to group model object that is used by client to display data
+ */
 @Component
 public class GroupEntityToGroup implements Converter<GroupEntity, Group> {
 

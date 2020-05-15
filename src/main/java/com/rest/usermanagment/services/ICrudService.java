@@ -5,7 +5,7 @@ import java.util.Set;
 
 public interface ICrudService<T> {
 
-    T save(T entity) throws Exception;
+    T saveOrUpdate(T entity) throws Exception;
     void deleteById(long id);
     T findById(long id);
     Set<T> findAll();

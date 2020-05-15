@@ -5,7 +5,9 @@ import com.rest.usermanagment.entities.UserEntity;
 import com.rest.usermanagment.entities.GroupEntity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-
+/**
+ * Converts model object to user entity object which is used by data layer
+ */
 @Component
 public class UserToUserEntity implements Converter<User, UserEntity> {
     @Override

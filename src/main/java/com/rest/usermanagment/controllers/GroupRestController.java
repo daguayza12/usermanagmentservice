@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
+
+
 @RestController
 @RequestMapping("/api")
 public class GroupRestController {
@@ -19,7 +21,7 @@ public class GroupRestController {
     }
     @PostMapping("/groups")
     public Group addGroup(@RequestBody Group group) throws Exception {
-       return userGroupService.save(group);
+       return userGroupService.saveOrUpdate(group);
     }
     @DeleteMapping("/groups/{groupId}")
     public String deleteGroup(@PathVariable long groupId){

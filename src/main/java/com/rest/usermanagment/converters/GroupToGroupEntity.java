@@ -10,7 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+/**
+ * Converts model object to group entity object which is used by data layer
+ */
 @Component
 public class GroupToGroupEntity implements Converter<Group, GroupEntity> {
     @Autowired
