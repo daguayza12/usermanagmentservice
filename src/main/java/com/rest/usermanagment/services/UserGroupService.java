@@ -31,7 +31,7 @@ public class UserGroupService implements ICrudService<UserGroup> {
             UserGroupEntity savedGroupEntity = userGroupRepository.save(Objects.requireNonNull(userGroupEntity));
             userGroup = userGrpEntityToUserGrp.convert(savedGroupEntity);
         }catch (DataIntegrityViolationException e){
-            throw new DuplicateUserGroupException("User group: " + userGroup.getGroupName() +" already exists.");
+            throw new DuplicateUserGroupException("Group already exists.");
         }
        return userGroup;
     }
