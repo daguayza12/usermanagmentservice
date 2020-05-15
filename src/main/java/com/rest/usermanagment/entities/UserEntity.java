@@ -43,14 +43,14 @@ public class UserEntity implements Serializable {
     //bi-directional many-to-one association to Usergroup
     @ManyToOne
     @JoinColumn(name="group_id")
-    private UserGroupEntity userGroupEntity;
+    private GroupEntity groupEntity;
 
-    public UserGroupEntity getUserGroupEntity() {
-        return userGroupEntity;
+    public GroupEntity getGroupEntity() {
+        return groupEntity;
     }
 
-    public void setUserGroupEntity(UserGroupEntity usergroupEntity) {
-        this.userGroupEntity = usergroupEntity;
+    public void setGroupEntity(GroupEntity usergroupEntity) {
+        this.groupEntity = usergroupEntity;
     }
 
 

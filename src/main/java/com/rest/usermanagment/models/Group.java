@@ -2,7 +2,7 @@ package com.rest.usermanagment.models;
 
 import java.util.Set;
 
-public class UserGroup {
+public class Group {
 
     private long groupId;
 

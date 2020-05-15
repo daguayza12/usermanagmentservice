@@ -2,7 +2,7 @@ package com.rest.usermanagment.converters;
 
 import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.entities.UserEntity;
-import com.rest.usermanagment.entities.UserGroupEntity;
+import com.rest.usermanagment.entities.GroupEntity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
@@ -18,10 +18,10 @@ public class UserToUserEntity implements Converter<User, UserEntity> {
         userEntity.setUserId(user.getUserId());
         userEntity.setUserRole(user.getUserRole());
         if(user.getGroupId() !=0) {
-            UserGroupEntity usergroupEntity = new UserGroupEntity();
+            GroupEntity usergroupEntity = new GroupEntity();
             usergroupEntity.setGroupId(user.getGroupId());
             usergroupEntity.setGroupName(user.getGroupName());
-            userEntity.setUserGroupEntity(usergroupEntity);
+            userEntity.setGroupEntity(usergroupEntity);
         }
         return userEntity;
     }

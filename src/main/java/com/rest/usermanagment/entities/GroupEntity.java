@@ -6,12 +6,12 @@ import java.util.Set;
 
 
 /**
- * The persistent class for the usergroup database table.
+ * The persistent class for the user group database table.
  * 
  */
 @Entity
 @Table(name = "usergroup")
-public class UserGroupEntity implements Serializable {
+public class GroupEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -25,10 +25,10 @@ public class UserGroupEntity implements Serializable {
 
 
 	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy= "userGroupEntity")
+	@OneToMany(mappedBy= "groupEntity")
 	private Set<UserEntity> userEntity;
 
-	public UserGroupEntity() {
+	public GroupEntity() {
 	}
 	public Set<UserEntity> getUsersEntity() {
 		return userEntity;

@@ -18,6 +18,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Utility class to generate and validate jtw token
+ */
 @Service
 public class JwtTokenUtil {
 

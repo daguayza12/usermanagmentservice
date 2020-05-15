@@ -23,13 +23,13 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
     @Autowired
     private UserToUserEntity userToUserEntity;
     @Autowired
-    private UserGroupService userGroupService;
+    private GroupService groupService;
 
     @Override
     public User save(User user) throws DuplicateUserException {
        UserEntity userEntity = userToUserEntity.convert(user);
-       if(userEntity.getUserGroupEntity()!=null){
-           userGroupService.findById(userEntity.getUserGroupEntity().getGroupId());
+       if(userEntity.getGroupEntity()!=null){
+           groupService.findById(userEntity.getGroupEntity().getGroupId());
        }
        try {
            UserEntity savedEntity = userRepository.save(Objects.requireNonNull(userEntity));
