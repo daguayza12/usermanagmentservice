@@ -15,6 +15,9 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * @Configuration @EnableWebSecurity together turns off Springs default webapp security
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
@@ -23,13 +26,18 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
+    /**
+     * Makes a call to user detail service to authenticate user
+     * @param auth
+     * @throws Exception
+     */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailService);
     }
 
     /**
-     * Newer version of spring doesnt support authentication manager so need to create the bean manually
+     * Newer version of springboot doesnt support authentication manager so need to create the bean manually
      * @return
      * @throws Exception
      */
@@ -40,8 +48,8 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * Spring security blocks all endpoints so this method will make sure
-     * auth endpoint is only allowed in order to retrieve token
+     * Spring security blocks all endpoints by default so this method ensure
+     * /auth is the only endpoint allowed in order to retrieve token
      * @param httpSecurity
      * @throws Exception
      */
@@ -55,6 +63,11 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
+
+    /**
+     * Will prevent spring security from encoding hardcoded password
+     * @return
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();

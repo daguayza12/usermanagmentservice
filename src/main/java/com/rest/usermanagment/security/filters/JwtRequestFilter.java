@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Class to intercept incoming requests by extracting token from heading and validating the token
+ */
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
