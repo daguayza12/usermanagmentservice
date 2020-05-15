@@ -1,5 +1,6 @@
 package com.rest.usermanagment.controllers;
 
+import com.rest.usermanagment.entities.UserGroupEntity;
 import com.rest.usermanagment.models.UserGroup;
 import com.rest.usermanagment.services.ICrudService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,12 @@ public class UserGroupRestController {
     }
 
     @DeleteMapping("/groups/{groupId}")
-    public String deleteGroup(@PathVariable int groupId){
+    public String deleteGroup(@PathVariable long groupId){
         userGroupService.deleteById(groupId);
         return "Deleted user id - " + groupId;
     }
-
+    @GetMapping("/groups/{groupId}")
+    public UserGroup getGroupById(@PathVariable long groupId){
+        return userGroupService.findById(groupId);
+    }
 }

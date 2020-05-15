@@ -26,7 +26,7 @@ public class UserRestController {
         return userService.save(user);
     }
     @DeleteMapping("/users/{userId}")
-    public String deleteUser(@PathVariable int userId){
+    public String deleteUser(@PathVariable long userId){
         userService.deleteById(userId);
         return "Deleted user id - " + userId;
     }
