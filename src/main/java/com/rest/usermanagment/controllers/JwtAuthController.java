@@ -29,7 +29,7 @@ public class JwtAuthController {
     private JwtTokenUtil jwtTokenUtil;
     /**
      * Authenticates user with Springs authentication manager
-     * Once user is authenticated a jwt token is created and returned
+     * Once user is authenticated a token is created and returned back to client
      * @param authRequest
      * @return
      * @throws Exception
@@ -44,6 +44,7 @@ public class JwtAuthController {
         catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
+        // creates instance of userdetail needed when generating a token
         final UserDetails userDetails = userDetailService
                 .loadUserByUsername(authRequest.getEmail());
         final String token = jwtTokenUtil.generateToken(userDetails);
