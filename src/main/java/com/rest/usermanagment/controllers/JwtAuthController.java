@@ -50,4 +50,14 @@ public class JwtAuthController {
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthResponse(token));
     }
+
+    /**
+     * Method called by client after token is created to retrieve logged in user information
+     * @param email
+     * @return
+     */
+    @GetMapping("/auth/{email}")
+    public User getLoggedInUser(@PathVariable String email)  {
+        return userService.findByEmail(email);
+    }
 }
