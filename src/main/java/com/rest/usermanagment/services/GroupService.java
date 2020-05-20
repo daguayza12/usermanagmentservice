@@ -1,13 +1,12 @@
 package com.rest.usermanagment.services;
 
-import com.rest.usermanagment.converters.GroupEntityToGroup;
-import com.rest.usermanagment.converters.GroupToGroupEntity;
 import com.rest.usermanagment.exceptions.DuplicateGroupException;
 import com.rest.usermanagment.models.Group;
 import com.rest.usermanagment.entities.GroupEntity;
 import com.rest.usermanagment.exceptions.GroupNotFoundException;
 import com.rest.usermanagment.repositories.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -17,18 +16,16 @@ import java.util.*;
 public class GroupService implements ICrudService<Group> {
     @Autowired
     private GroupRepository groupRepository;
-
     @Autowired
-    private GroupToGroupEntity userGrpToUserGrpEntity;
+    private Converter<Group,GroupEntity> userGrpToUserGrpEntity;
     @Autowired
-    private GroupEntityToGroup userGrpEntityToUserGrp;
+    private Converter<GroupEntity,Group> userGrpEntityToUserGrp;
 
     /**
      * calls repo save method that will save or update group info based on input
      * if input is passed with existing group then it will perform an update
      * @param group
-     * @return
-     * @throws DuplicateGroupException
+     * @return group
      */
     @Override
     public Group saveOrUpdate(Group group)   {
@@ -59,7 +56,7 @@ public class GroupService implements ICrudService<Group> {
      * Finds Group based on groupId
      * Used to verify a group exists before adding a user to group
      * @param id
-     * @return
+     * @return group
      */
     @Override
     public Group findById(long id) {
@@ -72,7 +69,7 @@ public class GroupService implements ICrudService<Group> {
 
     /**
      * Used to load all groups to group page
-     * @return
+     * @return groups
      */
     @Override
     public Set<Group> findAll() {
