@@ -1,7 +1,7 @@
 package com.rest.usermanagment.exceptions;
 
 
-public class GroupNotFoundException extends RuntimeException   {
+public class GroupNotFoundException extends NotFoundException   {
 
     public GroupNotFoundException() {
     }

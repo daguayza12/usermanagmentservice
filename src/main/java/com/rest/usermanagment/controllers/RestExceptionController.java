@@ -1,10 +1,7 @@
 package com.rest.usermanagment.controllers;
 
-import com.rest.usermanagment.exceptions.DuplicateUserException;
-import com.rest.usermanagment.exceptions.DuplicateGroupException;
+import com.rest.usermanagment.exceptions.*;
 import com.rest.usermanagment.models.ErrorResponse;
-import com.rest.usermanagment.exceptions.GroupNotFoundException;
-import com.rest.usermanagment.exceptions.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public  class RestExceptionController {
     
     @ExceptionHandler(value = {UserNotFoundException.class, GroupNotFoundException.class})
-     ResponseEntity<ErrorResponse> handleException(RuntimeException exc){
+     ResponseEntity<ErrorResponse> handleException(NotFoundException exc){
          ErrorResponse error = new ErrorResponse(
                  HttpStatus.NOT_FOUND.value(),
                  exc.getMessage(),
@@ -26,7 +23,7 @@ public  class RestExceptionController {
     }
 
     @ExceptionHandler(value = {DuplicateUserException.class, DuplicateGroupException.class})
-    ResponseEntity<ErrorResponse> handleException(Exception exc){
+    ResponseEntity<ErrorResponse> handleException(BadRequestException exc){
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.BAD_REQUEST.value(),
                 exc.getMessage(),

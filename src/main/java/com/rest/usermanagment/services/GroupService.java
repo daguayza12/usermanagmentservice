@@ -31,7 +31,7 @@ public class GroupService implements ICrudService<Group> {
      * @throws DuplicateGroupException
      */
     @Override
-    public Group saveOrUpdate(Group group) throws DuplicateGroupException {
+    public Group saveOrUpdate(Group group)   {
         GroupEntity groupEntity = userGrpToUserGrpEntity.convert(group);
         try {
             GroupEntity savedGroupEntity = groupRepository.save(Objects.requireNonNull(groupEntity));

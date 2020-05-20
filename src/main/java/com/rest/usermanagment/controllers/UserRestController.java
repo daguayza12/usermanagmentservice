@@ -21,7 +21,7 @@ public class UserRestController {
     }
 
     @PostMapping("/users")
-    public User addUser(@RequestBody User user) throws Exception {
+    public User addUser(@RequestBody User user) {
         return userService.saveOrUpdate(user);
     }
     @DeleteMapping("/users/{userId}")

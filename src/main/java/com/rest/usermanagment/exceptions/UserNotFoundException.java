@@ -1,7 +1,7 @@
 package com.rest.usermanagment.exceptions;
 
 
-public class UserNotFoundException extends RuntimeException {
+public class UserNotFoundException extends NotFoundException {
 
     public UserNotFoundException() {
     }

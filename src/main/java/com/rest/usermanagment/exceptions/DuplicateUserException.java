@@ -1,6 +1,6 @@
 package com.rest.usermanagment.exceptions;
 
-public class DuplicateUserException extends Exception {
+public class DuplicateUserException extends BadRequestException {
     public DuplicateUserException() {
     }
 

@@ -33,7 +33,7 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
      * @throws DuplicateUserException
      */
     @Override
-    public User saveOrUpdate(User user) throws DuplicateUserException {
+    public User saveOrUpdate(User user)   {
        UserEntity userEntity = userToUserEntity.convert(user);
        if(userEntity.getGroupEntity()!=null){
            groupService.findById(userEntity.getGroupEntity().getGroupId());
@@ -44,6 +44,7 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
        }catch (DataIntegrityViolationException e){
            throw new DuplicateUserException("User email already exists.");
        }
+
        return user;
     }
 

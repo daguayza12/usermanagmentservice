@@ -20,7 +20,7 @@ public class GroupRestController {
         return userGroupService.findAll();
     }
     @PostMapping("/groups")
-    public Group addGroup(@RequestBody Group group) throws Exception {
+    public Group addGroup(@RequestBody Group group)   {
        return userGroupService.saveOrUpdate(group);
     }
     @DeleteMapping("/groups/{groupId}")
