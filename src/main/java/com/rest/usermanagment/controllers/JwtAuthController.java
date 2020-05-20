@@ -4,7 +4,7 @@ import com.rest.usermanagment.models.AuthRequest;
 import com.rest.usermanagment.models.AuthResponse;
 import com.rest.usermanagment.models.User;
 import com.rest.usermanagment.security.util.JwtTokenUtil;
-import com.rest.usermanagment.services.IQueryService;
+import com.rest.usermanagment.services.IUserService;
 import com.rest.usermanagment.services.SecurityUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class JwtAuthController {
     private SecurityUserDetailService userDetailService;
 
     @Autowired
-    private IQueryService<User> userService;
+    private IUserService<User> userService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     /**
@@ -52,9 +52,9 @@ public class JwtAuthController {
     }
 
     /**
-     * Method called by client after token is created to retrieve logged in user information
+     * Http mapping for retrieving user information after token is created
      * @param email
-     * @return
+     * @return user
      */
     @GetMapping("/auth/{email}")
     public User getLoggedInUser(@PathVariable String email)  {

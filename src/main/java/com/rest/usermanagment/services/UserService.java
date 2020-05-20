@@ -10,11 +10,10 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 
 @Service
-public class UserService implements IQueryService<User>,ICrudService<User>{
+public class UserService implements IUserService<User>{
 
     @Autowired
     private UserRepository userRepository;
@@ -32,20 +31,19 @@ public class UserService implements IQueryService<User>,ICrudService<User>{
      * @return user
      */
     @Override
-    public User saveOrUpdate(User user)   {
-       UserEntity userEntity = userToUserEntity.convert(user);
-       if(userEntity.getGroupEntity()!=null){
-           groupService.findById(userEntity.getGroupEntity().getGroupId());
-       }
-       try {
-           UserEntity savedEntity = userRepository.save(Objects.requireNonNull(userEntity));
-           user = userEntityToUser.convert(savedEntity);
-       }catch (DataIntegrityViolationException e){
-           throw new DuplicateUserException("User email already exists.");
-       }
+    public User saveOrUpdate(User user) {
+        UserEntity userEntity = userToUserEntity.convert(user);
+        if(userEntity.getGroupEntity()!=null){
+            groupService.findById(userEntity.getGroupEntity().getGroupId());
+        }
+        try {
+            UserEntity savedEntity = userRepository.save(Objects.requireNonNull(userEntity));
+            user = userEntityToUser.convert(savedEntity);
+        }catch (DataIntegrityViolationException e){
+            throw new DuplicateUserException("User email already exists.");
+        }
 
-       return user;
-    }
+        return user;    }
 
     /**
      * Deletes user based on userId sent from client
