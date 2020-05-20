@@ -1,7 +1,6 @@
 package com.rest.usermanagment.controllers;
 
 import com.rest.usermanagment.models.Group;
-import com.rest.usermanagment.services.ICrudService;
 import com.rest.usermanagment.services.IGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
